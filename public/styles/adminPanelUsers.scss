@@ -1,0 +1,38 @@
+.showUsersTable {
+  margin-top: 3rem;
+  background: linear-gradient(225deg, #2f4256, #283848);
+  box-shadow:  -16px 16px 32px #19232d,
+  16px -16px 32px #3f5973;
+  border-radius: 3rem;
+  thead {
+    tr {
+      background-color: #34495e;
+      th {
+        padding: 1.5rem;
+      }
+      th:last-of-type {
+        border-top-left-radius: 3rem;
+      }
+      th:first-of-type {
+        border-top-right-radius: 3rem;
+      }
+    }
+  }
+  tbody {
+    tr {
+      transition: all .4s;
+      td {
+        padding: 1.5rem;
+      }
+      .actions {
+        display: flex;
+      }
+    }
+    tr:hover {
+      transform: scale(1.01);
+    }
+  }
+  tr:nth-child(even){
+    background-color: rgba(52, 73, 94, 0.9);
+  }
+}

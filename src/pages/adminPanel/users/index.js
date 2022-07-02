@@ -1,24 +1,31 @@
-import Head from 'next/head'
-import SideNavbar from "../../../components/adminPanel/layout/sideNavbar";
-import PagesHeader from "../../../components/adminPanel/layout/pagesHeader";
-import HomeContent from "../../../components/adminPanel/articles/home/content";
+import Head from 'next/head';
+import axios from "axios";
+import AddFormBtn from "../../../components/adminPanel/layout/addFormBtn";
+import AdminPanelUsers from "../../../components/adminPanel/users";
 
-export default function Home() {
+const Users = ({data}) => {
+
     return (
         <>
             <Head>
-                <title> پنل مدیریت </title>
+                <title> پنل مدیریت - لیست کاربران </title>
             </Head>
-            <main className={"dFlex"}>
-                <aside>
-                    <SideNavbar />
-                </aside>
-                <div className={"w-10 m-4"}>
-                    <header className={"flexCenter"}>
-                        <PagesHeader headerTitle={"پنل مدیریت وبلاگ آسان بیاموز"} />
-                    </header>
-                </div>
-            </main>
+            <AdminPanelUsers data={data} />
+            <AddFormBtn />
         </>
     )
 }
+
+export const getServerSideProps = async () => {
+
+    let res = await axios.get("https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_users");
+    let data = res.data.data
+
+    return {
+        props : {
+            data,
+        }
+    }
+}
+
+export default Users;

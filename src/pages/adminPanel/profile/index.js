@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import SideNavbar from "../../../components/adminPanel/layout/sideNavbar";
 import PagesHeader from "../../../components/adminPanel/layout/pagesHeader";
-import HomeContent from "../../../components/adminPanel/articles/home/content";
 
 export default function Home() {
     return (

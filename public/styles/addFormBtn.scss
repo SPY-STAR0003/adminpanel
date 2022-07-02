@@ -1,0 +1,16 @@
+.addFormBtn {
+  width: 2rem;
+  height: 2rem;
+  background: linear-gradient(225deg, #2f4256, #283848);
+  box-shadow:  -16px 16px 32px #19232d,
+  16px -16px 32px #3f5973;
+  border-radius: 50%;
+  transition: all .4s;
+}
+
+.addFormBtn:hover {
+  transform: translateX(-4px);
+  .rightTooltip {
+    display: block;
+  }
+}

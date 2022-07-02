@@ -59,6 +59,12 @@ body {
   top: 0;
 }
 
+.fixedLeftBottom {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+
 .leftTooltip {
   display: none;
   position: absolute;
@@ -68,6 +74,17 @@ body {
   white-space: nowrap;
   animation: fadeOpacityToLeft .4s;
 }
+
+.rightTooltip {
+  display: none;
+  position: absolute;
+  left: 100px;
+  background: black;
+  color: white;
+  white-space: nowrap;
+  animation: fadeOpacityToRight .4s;
+}
+
 // alignment =========================
 .textRight {
   direction: rtl;
@@ -104,7 +121,7 @@ body {
   justify-content: left;
 }
 
-.flexSpaceBetween {
+.flexSpaceAround {
   display: flex;
   flex-direction: row !important;
   justify-content: space-around !important;
@@ -192,6 +209,17 @@ body {
   0% {
     opacity: 0;
     transform: translateX(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOpacityToRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-16px);
   }
   100% {
     opacity: 1;
