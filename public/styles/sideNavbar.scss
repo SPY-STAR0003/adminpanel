@@ -1,0 +1,39 @@
+.sideNavbar {
+  padding: 2rem 0;
+  background: linear-gradient(225deg, #2f4256, #283848);
+  box-shadow:  -19px 19px 51px #19232d,
+  19px -19px 51px #3f5973;
+  border-radius: 5rem;
+  .sideNavbarPages {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .sideNavbarPage {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 1rem 0;
+      background: linear-gradient(225deg, #2f4256, #283848);
+      box-shadow:  -35px 35px 70px #19232d,
+      35px -35px 70px #3f5973;
+      transition: all .4s;
+      svg {
+        position: relative;
+        font-size: 3rem;
+      }
+    }
+    .sideNavbarPage:hover {
+      transform: translateX(8px);
+      .leftTooltip {
+        display: block;
+      }
+    }
+  }
+}
+
+.pagesHeader {
+  border-radius: 12px;
+  background: linear-gradient(225deg, #2f4256, #283848);
+  box-shadow:  -35px 35px 70px #19232d,
+  35px -35px 70px #3f5973;
+}
