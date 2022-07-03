@@ -6,6 +6,11 @@
   16px -16px 32px #3f5973;
   border-radius: 50%;
   transition: all .4s;
+  .iconAddUser {
+    position: relative;
+    left: 3px;
+    top: 3px;
+  }
 }
 
 .addFormBtn:hover {

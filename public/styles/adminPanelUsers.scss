@@ -28,11 +28,35 @@
         display: flex;
       }
     }
-    tr:hover {
-      transform: scale(1.01);
-    }
   }
   tr:nth-child(even){
     background-color: rgba(52, 73, 94, 0.9);
+  }
+}
+
+.addUserForm {
+  position: relative;
+  width: 900px;
+  height: 500px;
+  button {
+    position: absolute;
+    left: -24px;
+    bottom: -45px;
+    font-size: 6rem;
+    color: dodgerblue;
+    transition: all .2s;
+  }
+  button:hover {
+    color: #0066ff;
+  }
+  .closeBtn {
+    position: absolute;
+    top: 0;
+    right: .5rem;
+    transform: rotate(45deg);
+    transition: all .2s;
+  }
+  .closeBtn:hover {
+    transform: rotate(225deg);
   }
 }

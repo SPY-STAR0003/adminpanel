@@ -65,6 +65,18 @@ body {
   bottom: 0;
 }
 
+.fixedShadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(4px);
+}
+
 .leftTooltip {
   display: none;
   position: absolute;
@@ -83,6 +95,60 @@ body {
   color: white;
   white-space: nowrap;
   animation: fadeOpacityToRight .4s;
+}
+
+.highZIndex {
+  z-index: 9999;
+}
+
+// form ==============================
+input, select {
+  outline: none;
+  border: none;
+  font-family: Vazirmatn , serif;
+}
+
+button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.inputMedium {
+  width: 100%;
+  font-size: 1.1rem;
+  padding: .75rem 1rem .75rem 0;
+  border-radius: 7px;
+}
+
+input::placeholder {
+  font-family: Vazirmatn , serif;
+}
+
+form {
+  box-sizing: border-box;
+}
+
+// layout ============================
+.container {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.col3 {
+  flex: 0 0 auto;
+  width: 30%;
+}
+
+.col7 {
+  flex: 0 0 auto;
+  width: 70%;
 }
 
 // alignment =========================
@@ -139,10 +205,6 @@ body {
 }
 
 // width & height =====================
-.pointer:hover {
-  cursor: pointer;
-}
-
 .height100vh {
   height: 100vh;
 }
@@ -172,6 +234,10 @@ body {
   color: white;
 }
 
+.borderRadius {
+  border-radius: 50%;
+}
+
 // specialClasses =====================
 .circleShadow {
   width: 350px;
@@ -180,6 +246,37 @@ body {
   background: linear-gradient(225deg, #2f4256, #283848);
   box-shadow:  -35px 35px 70px #19232d,
   35px -35px 70px #3f5973;
+}
+
+.glassDiv {
+  background: rgba(44, 62, 80, 0.6);
+  backdrop-filter: blur(2px);
+  color: white;
+  border: 1px solid white;
+}
+
+// hovers ==============================
+
+.pointer:hover {
+  cursor: pointer;
+}
+
+.redHover {
+  transition: all .4s;
+}
+
+.redHover:hover {
+  transform: scale(1.1);
+  color: #e74c3c;
+}
+
+.blueHover {
+  transition: all .4s;
+}
+
+.blueHover:hover {
+  transform: scale(1.1);
+  color: #3498db;
 }
 
 // transition =========================
