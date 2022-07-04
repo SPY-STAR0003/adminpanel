@@ -2,7 +2,7 @@ import { FaUserPlus } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { showAddUserForm } from "../../../../store/slices/usersSlice";
 
-const AddFormBtn = () => {
+const AddUserFormBtn = () => {
     const dispatch = useDispatch();
 
     const handleAddUserForm = () => {
@@ -20,4 +20,4 @@ const AddFormBtn = () => {
     )
 }
 
-export default AddFormBtn;
+export default AddUserFormBtn;

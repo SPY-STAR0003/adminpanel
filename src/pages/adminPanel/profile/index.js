@@ -14,7 +14,7 @@ export default function Home() {
                 </aside>
                 <div className={"w-10 m-4"}>
                     <header className={"flexCenter"}>
-                        <PagesHeader headerTitle={"پنل مدیریت وبلاگ آسان بیاموز"} />
+                        <PagesHeader headerTitle={"قسمت پروفایل در کامیت های بعدی فعال خواهد شد ..."} />
                     </header>
                 </div>
             </main>

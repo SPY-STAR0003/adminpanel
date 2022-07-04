@@ -1,6 +1,6 @@
 
-import { useSelector , useDispatch } from "react-redux";
-import {addUser, showAddUserForm} from "../../../../store/slices/usersSlice";
+import { useDispatch } from "react-redux";
+import {updateUsersList, showAddUserForm} from "../../../../store/slices/usersSlice";
 import {useState} from "react";
 import axios from "axios";
 import Form from "../form";
@@ -10,12 +10,12 @@ const AddUserForm = () => {
 
     const dispatch = useDispatch()
 
-    const showForm = useSelector( state => state.users.showAddUserForm)
-
     const formHandler = async (e) => {
         e.preventDefault()
-        let sendUser = await axios.post("https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_users" , user)
-        dispatch(addUser(user))
+        await axios.post("https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_users" , user)
+        let usersList = await axios.get("https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_users")
+        e.target.reset()
+        dispatch(updateUsersList(usersList.data.data))
         dispatch(showAddUserForm())
     }
 
@@ -23,13 +23,22 @@ const AddUserForm = () => {
         setUser({...user , [key] : value});
     }
 
+    const hideForm = (e) => {
+        if (e.target.classList.contains("fixedShadow")) {
+            dispatch(showAddUserForm())
+        }
+    }
+
     return (
-        <div className={`fixedShadow highZIndex ${showForm?"dFlex":"dNone"}`}>
+        <div className={"fixedShadow highZIndex"} onClick={e => hideForm(e)}>
             <div className={"addUserForm glassDiv radius-8"}>
                 <header className={"textCenter fs-14 bold-7 mt-8 mb-4"}>
                      فرم افزودن کاربر جدید
                 </header>
-                <Form formHandler={formHandler} inputHandler={inputHandler} />
+                <Form formHandler={formHandler}
+                      inputHandler={inputHandler}
+                      isEditForm={false}
+                />
             </div>
         </div>
     )

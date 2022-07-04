@@ -1,13 +1,14 @@
 import Input from "./input";
 import Select from "./Select";
-import {showAddUserForm} from "../../../../store/slices/usersSlice";
+import {showAddUserForm, showEditUserForm} from "../../../../store/slices/usersSlice";
 import { FaCheckCircle } from "react-icons/fa";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import propTypes from 'prop-types';
 
-const Form = ({formHandler, inputHandler}) => {
+const Form = ({formHandler, inputHandler, isEditForm}) => {
+    let editingUserInState = useSelector(state => state.users.editingUser) || "";
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     return (
         <form onSubmit={e => formHandler(e)}>
@@ -18,13 +19,14 @@ const Form = ({formHandler, inputHandler}) => {
                         inputSize={"w-5"}
                         labelValue={" نام و نام خانوادگی :"}
                         onchange={inputHandler}
+                        defaultValue={editingUserInState.name}
                     />
                     <Input
                         inputName={"year"}
                         inputSize={"w-3 mr-10"}
                         labelValue={" سال تولد :"}
                         onchange={inputHandler}
-
+                        defaultValue={editingUserInState.year}
                     />
                 </div>
                 <div className={"row mt-1 mb-6"}>
@@ -33,7 +35,7 @@ const Form = ({formHandler, inputHandler}) => {
                         inputSize={"w-5"}
                         labelValue={" کد ملی :"}
                         onchange={inputHandler}
-
+                        defaultValue={editingUserInState.code}
                     />
                     <Select
                         selectName={"gender"}
@@ -52,6 +54,7 @@ const Form = ({formHandler, inputHandler}) => {
                         inputSize={"w-5"}
                         labelValue={" ایمیل :"}
                         onchange={inputHandler}
+                        defaultValue={editingUserInState.email}
                     />
                     <Select
                         selectName={"role"}
@@ -75,7 +78,7 @@ const Form = ({formHandler, inputHandler}) => {
             </button>
             <span
                 className={"closeBtn fs-30 pointer"}
-                onClick={() => dispatch(showAddUserForm())}
+                onClick={() =>isEditForm?dispatch(showEditUserForm()):dispatch(showAddUserForm())}
             >
                 +
             </span>
@@ -85,7 +88,8 @@ const Form = ({formHandler, inputHandler}) => {
 
 Form.propTypes = {
     formHandler : propTypes.func,
-    inputHandler : propTypes.func
+    inputHandler : propTypes.func,
+    isEditForm : propTypes.bool
 }
 
 export default Form;

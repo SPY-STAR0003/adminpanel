@@ -1,6 +1,6 @@
 import {FaUserEdit , FaUserSlash} from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
-import {deleteUser} from "../../../store/slices/usersSlice";
+import {deleteUser, showEditUserForm} from "../../../store/slices/usersSlice";
 import axios from "axios";
 
 const TableBody = () => {
@@ -9,7 +9,7 @@ const TableBody = () => {
     const usersList = useSelector( state => state.users.usersList )
 
     const deleteHandler = async (id) => {
-        await axios.delete(`https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_users/${id}`)
+        await axios.delete(`https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_users/${id}`);
         dispatch(deleteUser(id))
     }
 
@@ -23,15 +23,16 @@ const TableBody = () => {
                         <td> {user.code} </td>
                         <td> {user.year} </td>
                         <td> {user.role} </td>
-                        <td className={"dFlex flexSpaceAround actions"}>
+                        <td>
                             <span
-                                className={"redHover fs-12"}
+                                className={"redHover fs-12 mrl-2"}
                                 onClick={() => deleteHandler(user.id)}
                             >
                                 <FaUserSlash />
                             </span>
                             <span
-                                className={"blueHover fs-12"}
+                                className={"blueHover fs-12 mrl-2"}
+                                onClick={() => dispatch(showEditUserForm(user))}
                             >
                                 <FaUserEdit />
                             </span>

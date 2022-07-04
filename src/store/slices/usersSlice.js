@@ -4,6 +4,8 @@ import {createSlice} from "@reduxjs/toolkit";
 let initialState = {
     usersList : [],
     showAddUserForm : false,
+    showEditUserForm : false,
+    editingUser : {}
 };
 
 const usersSlice = createSlice({
@@ -16,13 +18,10 @@ const usersSlice = createSlice({
                 usersList : [...payload]
             }
         },
-        addUser : ( state , { payload } ) => {
+        updateUsersList : ( state , { payload } ) => {
             return {
                 ...state,
-                usersList : [
-                    ...state.usersList,
-                    payload
-                ]
+                usersList : [...payload]
             }
         },
         deleteUser : ( state , { payload } ) => {
@@ -32,15 +31,22 @@ const usersSlice = createSlice({
                 usersList
             }
         },
-        showAddUserForm : ( state , { payload } ) => {
+        showAddUserForm : state => {
           return {
               ...state,
               showAddUserForm: !state.showAddUserForm,
           }
+        },
+        showEditUserForm : (state , {payload}) => {
+            return {
+                ...state,
+                showEditUserForm : !state.showEditUserForm,
+                editingUser : payload
+            }
         }
     }
 })
 
-export const { getUsers, addUser, deleteUser, showAddUserForm } = usersSlice.actions
+export const { getUsers, deleteUser, showAddUserForm, showEditUserForm, updateUsersList } = usersSlice.actions
 
 export default usersSlice.reducer;

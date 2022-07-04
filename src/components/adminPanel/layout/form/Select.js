@@ -9,9 +9,13 @@ const Select = ({selectName, selectSize, labelValue, options, onchange }) => {
                 className={"inputMedium mt-4"}
                 onChange={e => onchange(e.target.dataset.name,e.target.value)}
             >
+                <option value={"---"} defaultValue> --- </option>
                 {
                     options.map(item =>
-                        <option key={item.key} value={item.value}>
+                        <option
+                            key={item.key}
+                            value={item.value}
+                        >
                             {item.value}
                         </option>
                     )

@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import axios from "axios";
-import AddFormBtn from "../../../components/adminPanel/layout/addUserForm/addFormBtn";
+import AddFormBtn from "../../../components/adminPanel/layout/addUserFormBtn";
 import AdminPanelUsers from "../../../components/adminPanel/users";
 import { useDispatch } from "react-redux";
 import {getUsers} from "../../../store/slices/usersSlice";
