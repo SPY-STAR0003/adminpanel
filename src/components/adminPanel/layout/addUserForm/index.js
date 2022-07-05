@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import {updateUsersList, showAddUserForm} from "../../../../store/slices/usersSlice";
 import {useState} from "react";
 import axios from "axios";
-import Form from "../form";
+import Form from "./form";
 
 const AddUserForm = () => {
     const [user , setUser] = useState({})

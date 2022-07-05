@@ -1,16 +1,27 @@
 import Head from 'next/head';
 import ArticlesContent from "../../../components/adminPanel/articles";
 import axios from "axios";
-import AddUserFormBtn from "../../../components/adminPanel/layout/addUserFormBtn";
+import AddUserFormBtn from "../../../components/adminPanel/layout/showFormsBtn";
+import AddArticleForm from "../../../components/adminPanel/layout/addArticleForm";
+import { useSelector, useDispatch } from "react-redux";
+import {getArticlesList} from "../../../store/slices/articlesSlice"
 
 const Articles = ({articlesList}) => {
+
+    const showingAddArticleForm = useSelector( state => state.articles.showingAddArticleForm);
+    const dispatch = useDispatch();
+    dispatch(getArticlesList(articlesList))
+
     return (
         <>
             <Head>
                 <title> پنل مدیریت - لیست مقالات </title>
             </Head>
-            <ArticlesContent articlesList={articlesList} />
+            <ArticlesContent />
             <AddUserFormBtn isUser={false} tooltipValue={"افزودن مقاله جدید"} />
+            {
+                showingAddArticleForm ? <AddArticleForm /> : null
+            }
         </>
     )
 }

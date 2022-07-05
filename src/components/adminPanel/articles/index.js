@@ -2,9 +2,14 @@ import SideNavbar from "../layout/sideNavbar";
 import PagesHeader from "../layout/pagesHeader";
 import propTypes from "prop-types";
 import PN from "persian-number";
-import { FaRegClock, FaEdit, FaTrashAlt, FaEye } from "react-icons/fa"
+import { FaRegClock, FaEdit, FaTrashAlt, FaEye } from "react-icons/fa";
+import { useSelector, useDispatch } from "react-redux";
 
-const ArticlesContent = ({articlesList}) => {
+const ArticlesContent = () => {
+
+    const dispatch = useDispatch();
+
+    let articlesList = useSelector( state => state.articles.articlesList )
 
     return (
         <main className={"dFlex"}>
@@ -18,8 +23,8 @@ const ArticlesContent = ({articlesList}) => {
                 <div className={"adminPanelArticlesContent flexSpaceAround flexAlignStart"}>
                     <div className={"articlesList w-7"}>
                         {
-                            articlesList.map((article , index) => (
-                                <div className={"adminPanelArticleCard card"} key={index}>
+                            articlesList.map(article => (
+                                <div className={"adminPanelArticleCard card"} key={article.clientId}>
                                     <div className={"cardHeader"}>
                                         <div className={"cardSubject"}>
                                             - {article.subject}
@@ -41,9 +46,10 @@ const ArticlesContent = ({articlesList}) => {
                                     </div>
                                     <div className={"cardFooter"}>
                                         <div className={"cardFooterHashtags"}>
-                                            {article.hashtags.map((hashtag, index) => (
-                                                <span className={"primaryBtn"} key={index}> #{hashtag} </span>
-                                            ))}
+                                            {/*{article.hashtags.map((hashtag, index) => (*/}
+                                            {/*    <span className={"primaryBtn"} key={index}> #{hashtag} </span>*/}
+                                            {/*))}*/}
+                                            <span className={"primaryBtn"}> #{article.hashtags} </span>
                                         </div>
                                     </div>
                                     <div className={"editCard"}>
