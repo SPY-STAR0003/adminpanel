@@ -1,0 +1,19 @@
+.leftTooltip {
+  display: none;
+  position: absolute;
+  right: 100px;
+  background: black;
+  color: white;
+  white-space: nowrap;
+  animation: fadeOpacityToLeft .4s;
+}
+
+.rightTooltip {
+  display: none;
+  position: absolute;
+  left: 100px;
+  background: black;
+  color: white;
+  white-space: nowrap;
+  animation: fadeOpacityToRight .4s;
+}

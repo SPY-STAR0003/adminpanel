@@ -1,0 +1,21 @@
+.adminPanelArticlesContent {
+  .filterArticles {
+    height: 400px;
+    background: #2f4256;
+    box-shadow:  -11px 11px 22px #1f2b38,
+    11px -11px 22px #3f5974;
+    color: white;
+  }
+  .articlesList {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    .card {
+      color: white;
+      border-radius: 15px;
+      background: #2f4256;
+      box-shadow:  -11px 11px 22px #1f2b38,
+      11px -11px 22px #3f5974;
+    }
+  }
+}

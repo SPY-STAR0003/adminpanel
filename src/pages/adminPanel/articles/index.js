@@ -1,37 +1,30 @@
 import Head from 'next/head';
-import SideNavbar from "../../../components/adminPanel/layout/sideNavbar";
-import PagesHeader from "../../../components/adminPanel/layout/pagesHeader";
+import ArticlesContent from "../../../components/adminPanel/articles";
 import axios from "axios";
+import AddUserFormBtn from "../../../components/adminPanel/layout/addUserFormBtn";
 
-const Articles = () => {
+const Articles = ({articlesList}) => {
     return (
         <>
             <Head>
-                <title> پنل مدیریت </title>
+                <title> پنل مدیریت - لیست مقالات </title>
             </Head>
-            <main className={"dFlex"}>
-                <aside>
-                    <SideNavbar />
-                </aside>
-                <div className={"w-10 m-4"}>
-                    <header className={"flexCenter"}>
-                        <PagesHeader headerTitle={"پنل مدیریت وبلاگ آسان بیاموز"} />
-                    </header>
-                </div>
-            </main>
+            <ArticlesContent articlesList={articlesList} />
+            <AddUserFormBtn isUser={false} tooltipValue={"افزودن مقاله جدید"} />
         </>
     )
 }
 
-// export const getServerSideProps = () => {
-//
-//     let res = axios.get()
-//
-//     return {
-//         props : {
-//
-//         }
-//     }
-// }
+export const getServerSideProps = async () => {
+
+    let resArticles = await axios.get("https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_articles");
+    let articlesList = resArticles.data.data;
+
+    return {
+        props : {
+            articlesList
+        }
+    }
+}
 
 export default Articles;

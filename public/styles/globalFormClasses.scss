@@ -1,0 +1,27 @@
+// form ==============================
+input, select {
+  outline: none;
+  border: none;
+  font-family: Vazirmatn , serif;
+}
+
+button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.inputMedium {
+  width: 100%;
+  font-size: 1.1rem;
+  padding: .75rem 1rem .75rem 0;
+  border-radius: 7px;
+}
+
+input::placeholder {
+  font-family: Vazirmatn , serif;
+}
+
+form {
+  box-sizing: border-box;
+}

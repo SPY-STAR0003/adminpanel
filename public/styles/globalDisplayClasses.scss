@@ -1,0 +1,45 @@
+// display ===========================
+.dNone {
+  display: none;
+}
+
+.dBlock {
+  display: block;
+}
+
+.dFlex {
+  display: flex;
+}
+
+.flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flexLeft {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.flexSpaceAround {
+  display: flex;
+  flex-direction: row !important;
+  justify-content: space-around !important;
+  align-items: center;
+}
+
+.flexAlignStart {
+  align-items: flex-start !important;
+}
+
+.flexAlignCenter {
+  display: flex;
+  align-items: center;
+}
+
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+}

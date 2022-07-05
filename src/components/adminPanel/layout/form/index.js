@@ -1,5 +1,5 @@
 import Input from "./input";
-import Select from "./Select";
+import Select from "./select";
 import {showAddUserForm, showEditUserForm} from "../../../../store/slices/usersSlice";
 import { FaCheckCircle } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";

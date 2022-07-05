@@ -22,7 +22,6 @@ const EditUserForm = () => {
     const inputHandler = (key,value) => {
         setEditingUser({...editingUser , [key] : value});
     }
-    const textInput = useRef(null);
 
     const hideForm = (e) => {
         if (e.target.classList.contains("fixedShadow")) {
@@ -34,7 +33,7 @@ const EditUserForm = () => {
         <div className={"fixedShadow highZIndex"} onClick={e => hideForm(e)}>
             <div className={"addUserForm glassDiv radius-8"}>
                 <header className={"textCenter fs-14 bold-7 mt-8 mb-4"}>
-                    فرم افزودن کاربر جدید
+                    فرم ویرایش مشخصات کاربر
                 </header>
                 <Form
                     formHandler={formHandler}

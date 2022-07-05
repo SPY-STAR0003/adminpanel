@@ -16,7 +16,7 @@ const Users = ({usersList}) => {
                 <title> پنل مدیریت - لیست کاربران </title>
             </Head>
             <AdminPanelUsers />
-            <AddFormBtn />
+            <AddFormBtn isUser={true} tooltipValue={"اقزودن کاربر جدید"}/>
         </>
     )
 }

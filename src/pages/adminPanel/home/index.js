@@ -27,7 +27,7 @@ export default function Home({usersList, articlesList}) {
 
 export const getServerSideProps = async () => {
     let resUsers = await axios.get("https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_users");
-    let resArticles = await axios.get("https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_users");
+    let resArticles = await axios.get("https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_articles");
     let usersList = resUsers.data.data;
     let articlesList = resArticles.data.data;
 
