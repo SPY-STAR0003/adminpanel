@@ -1,8 +1,14 @@
+// react & nextJS
+import {useState} from "react";
 
+// libraries
+import axios from "axios";
+
+// redux
 import { useDispatch } from "react-redux";
 import {updateUsersList, showAddUserForm} from "../../../../store/slices/usersSlice";
-import {useState} from "react";
-import axios from "axios";
+
+// components
 import Form from "./form";
 
 const AddUserForm = () => {

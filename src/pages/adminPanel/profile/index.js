@@ -1,4 +1,7 @@
-import Head from 'next/head'
+// react & nextJS
+import Head from 'next/head';
+
+// components
 import SideNavbar from "../../../components/adminPanel/layout/sideNavbar";
 import PagesHeader from "../../../components/adminPanel/layout/pagesHeader";
 

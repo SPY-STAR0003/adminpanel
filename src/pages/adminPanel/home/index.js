@@ -1,8 +1,16 @@
-import Head from 'next/head'
+// React & NextJs
+import Head from 'next/head';
+import {useEffect} from "react";
+
+// libraries
+import axios from "axios";
+
+// redux
+
+// components
 import SideNavbar from "../../../components/adminPanel/layout/sideNavbar";
 import PagesHeader from "../../../components/adminPanel/layout/pagesHeader";
 import HomeContent from "../../../components/adminPanel/home";
-import axios from "axios";
 
 export default function Home({usersList, articlesList}) {
     return (

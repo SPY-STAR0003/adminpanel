@@ -1,3 +1,4 @@
+// React & nextJS
 import propTypes from "prop-types";
 
 const Input = ({inputName, inputSize, labelValue, onchange, defaultValue }) => {

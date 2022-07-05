@@ -1,11 +1,16 @@
-import Input from "../formsLayout/input";
-import Select from "../formsLayout/select";
-import {showAddUserForm, showEditUserForm} from "../../../../store/slices/usersSlice";
-import { FaCheckCircle } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
+// react & nextJS
 import propTypes from 'prop-types';
-import {showAddArticleForm} from "../../../../store/slices/articlesSlice";
-import Textarea from "../formsLayout/textarea";
+
+// libraries
+import { FaCheckCircle } from "react-icons/fa";
+
+// redux
+import { useDispatch, useSelector } from "react-redux";
+import {showAddUserForm, showEditUserForm} from "../../../../store/slices/usersSlice";
+
+// components
+import Input from "../../layout/formsLayout/input";
+import Select from "../../layout/formsLayout/select";
 
 const Form = ({formHandler, inputHandler, isEditForm}) => {
     let editingUserInState = useSelector(state => state.users.editingUser) || "";
@@ -17,51 +22,58 @@ const Form = ({formHandler, inputHandler, isEditForm}) => {
             <div className={"container p-4"}>
                 <div className={"row mt-1 mb-6"}>
                     <Input
-                        inputName={"subject"}
+                        inputName={"name"}
                         inputSize={"w-5"}
-                        labelValue={" عنوان مقاله :"}
+                        labelValue={" نام و نام خانوادگی :"}
                         onchange={inputHandler}
                         defaultValue={editingUserInState.name}
                     />
                     <Input
-                        inputName={"time"}
+                        inputName={"year"}
                         inputSize={"w-3 mr-10"}
-                        labelValue={" زمان تقریبی موردنیاز برای مطالعه مقاله :"}
+                        labelValue={" سال تولد :"}
                         onchange={inputHandler}
                         defaultValue={editingUserInState.year}
                     />
                 </div>
                 <div className={"row mt-1 mb-6"}>
                     <Input
-                        inputName={"hashtags"}
+                        inputName={"code"}
                         inputSize={"w-5"}
-                        labelValue={" هشتگ های مقاله :"}
+                        labelValue={" کد ملی :"}
                         onchange={inputHandler}
                         defaultValue={editingUserInState.code}
                     />
                     <Select
-                        selectName={"sort"}
+                        selectName={"gender"}
                         selectSize={"w-3 mr-10"}
-                        labelValue={" نوع مقاله :"}
+                        labelValue={" جنسیت :"}
                         onchange={inputHandler}
                         options={[
-                            {key : 1, value : "آموزشی"},
-                            {key : 2, value : "کاربردی"},
-                            {key : 3, value : "کسب و کار"},
-                            {key : 4, value : "بروزرسانی"},
-                            {key : 5, value : "معرفی ابزار"},
-                            {key : 6, value : "متفرقه"},
+                            {key : 1, value : "مرد"},
+                            {key : 2, value : "زن"},
                         ]}
                     />
                 </div>
                 <div className={"row mt-1 mb-6"}>
-                    <Textarea
-                        textareaName={"content"}
-                        textareaWidth={"w-9"}
-                        labelValue={" متن مقاله :"}
+                    <Input
+                        inputName={"email"}
+                        inputSize={"w-5"}
+                        labelValue={" ایمیل :"}
                         onchange={inputHandler}
-                        defaultValue={editingUserInState.code}
-                        textareaRows={10}
+                        defaultValue={editingUserInState.email}
+                    />
+                    <Select
+                        selectName={"role"}
+                        selectSize={"w-3 mr-10"}
+                        labelValue={"وظیفه :"}
+                        onchange={inputHandler}
+                        options={[
+                            {key : 1, value : "سازنده"},
+                            {key : 2, value : "مدیر"},
+                            {key : 3, value : "مشاور"},
+                            {key : 4, value : "عضو ساده"},
+                        ]}
                     />
                 </div>
             </div>
@@ -73,7 +85,7 @@ const Form = ({formHandler, inputHandler, isEditForm}) => {
             </button>
             <span
                 className={"closeBtn fs-30 pointer"}
-                onClick={() =>isEditForm?dispatch(showEditUserForm()):dispatch(showAddArticleForm())}
+                onClick={() =>isEditForm?dispatch(showEditUserForm()):dispatch(showAddUserForm())}
             >
                 +
             </span>

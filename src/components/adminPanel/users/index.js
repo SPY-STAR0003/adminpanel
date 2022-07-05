@@ -1,10 +1,17 @@
+// react & nextJS
+
+// libraries
+
+// redux
+import { useSelector } from "react-redux";
+
+// components
 import SideNavbar from "../layout/sideNavbar";
 import PagesHeader from "../layout/pagesHeader";
-import AddUserForm from "../layout/addUserForm";
+import AddUserForm from "./addUserForm";
 import TableHeader from "./tableHeader";
 import TableBody from "./tableBody";
-import EditUserForm from "../layout/editUserForm";
-import { useSelector } from "react-redux";
+import EditUserForm from "./editUserForm";
 
 const AdminPanelUsers = () => {
 

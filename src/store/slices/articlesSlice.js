@@ -3,6 +3,8 @@ import {createSlice} from "@reduxjs/toolkit";
 let initialState = {
     articlesList : [],
     showingAddArticleForm : false,
+    showingEditArticleForm : false,
+    editingArticle : {}
 };
 
 const articlesSlice = createSlice({
@@ -30,10 +32,24 @@ const articlesSlice = createSlice({
                 ...state,
                 showingAddArticleForm: !state.showingAddArticleForm,
             }
-        }
+        },
+        deleteArticle : ( state, {payload}) => {
+            let newArticlesList = state.articlesList.filter(article => article.clientId !== payload);
+            return {
+                ...state,
+                articlesList : [...newArticlesList]
+            }
+        },
+        showEditArticleForm : (state , {payload}) => {
+            return {
+                ...state,
+                showingEditArticleForm: !state.showingEditArticleForm,
+                editingArticle: payload
+            }
+        },
     }
 })
 
-export const { getArticlesList, addArticle, showAddArticleForm } = articlesSlice.actions;
+export const { getArticlesList, addArticle, showAddArticleForm, deleteArticle, showEditArticleForm} = articlesSlice.actions;
 
 export default articlesSlice.reducer;

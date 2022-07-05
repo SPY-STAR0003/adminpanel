@@ -1,3 +1,4 @@
+// React & nextJS
 import propTypes from "prop-types";
 
 function PagesHeader({headerTitle}) {

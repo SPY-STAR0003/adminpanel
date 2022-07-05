@@ -1,3 +1,4 @@
+// React & nextJS
 import propTypes from "prop-types";
 
 const Select = ({selectName, selectSize, labelValue, options, onchange }) => {

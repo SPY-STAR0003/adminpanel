@@ -1,5 +1,8 @@
+// react & nextJS
 import Image from "next/image";
 import Link from "next/link";
+
+// libraries
 import {FaUsers, FaHome, FaFileSignature, FaUserCircle} from "react-icons/fa";
 
 export default function SideNavbar() {

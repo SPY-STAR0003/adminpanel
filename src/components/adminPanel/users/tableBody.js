@@ -1,7 +1,14 @@
+// react & nextJS
+
+// libraries
 import {FaUserEdit , FaUserSlash} from "react-icons/fa";
+import axios from "axios";
+
+// redux
 import { useSelector, useDispatch } from "react-redux";
 import {deleteUser, showEditUserForm} from "../../../store/slices/usersSlice";
-import axios from "axios";
+
+// components
 
 const TableBody = () => {
     const dispatch = useDispatch()

@@ -1,14 +1,25 @@
+// React & NextJs
 import Head from 'next/head';
+import {useEffect} from "react";
+
+// libraries
 import axios from "axios";
-import AddFormBtn from "../../../components/adminPanel/layout/showFormsBtn";
-import AdminPanelUsers from "../../../components/adminPanel/users";
+
+// redux
 import { useDispatch } from "react-redux";
 import {getUsers} from "../../../store/slices/usersSlice";
+
+// components
+import AddFormBtn from "../../../components/adminPanel/layout/showFormsBtn";
+import AdminPanelUsers from "../../../components/adminPanel/users";
 
 const Users = ({usersList}) => {
 
     const dispatch = useDispatch()
-    dispatch(getUsers(usersList))
+
+    useEffect(() => {
+        dispatch(getUsers(usersList))
+    }, [dispatch, usersList])
 
     return (
         <>

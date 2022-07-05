@@ -1,7 +1,15 @@
+// react & nextJS
+
+// libraries
 import { FaUserPlus, FaFileMedical } from "react-icons/fa";
+
+// redux
 import { useDispatch } from "react-redux";
 import { showAddUserForm } from "../../../../store/slices/usersSlice";
 import { showAddArticleForm } from "../../../../store/slices/articlesSlice";
+
+// components
+
 
 const ShowFormsBtn = ({isUser, tooltipValue}) => {
     const dispatch = useDispatch();

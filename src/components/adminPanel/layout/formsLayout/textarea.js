@@ -1,3 +1,4 @@
+// React & nextJS
 import propTypes from "prop-types";
 
 const Textarea = ({textareaName, textareaWidth, textareaRows, labelValue, onchange, defaultValue }) => {

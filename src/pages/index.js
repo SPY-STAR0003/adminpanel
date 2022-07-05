@@ -1,15 +1,12 @@
-import Head from 'next/head'
-import SideNavbar from "../components/adminPanel/layout/sideNavbar";
-import PagesHeader from "../components/adminPanel/layout/pagesHeader";
+import Head from 'next/head';
 
 export default function Home() {
   return (
     <>
         <Head>
-            <title> پنل مدیریت </title>
+            <title> صفحه لاگین </title>
         </Head>
-        <SideNavbar />
-        <PagesHeader headerTitle={"پنل مدیریت وبلاگ آسان بیاموز"} />
+        <p className={"textCenter mtb-8 fs-25 bold-8 white"}> در حال بروزرسانی ... </p>
     </>
   )
 }

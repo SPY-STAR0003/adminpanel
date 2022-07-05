@@ -1,16 +1,28 @@
+// React & NextJs
 import Head from 'next/head';
-import ArticlesContent from "../../../components/adminPanel/articles";
+import {useEffect} from "react";
+
+// libraries
 import axios from "axios";
-import AddUserFormBtn from "../../../components/adminPanel/layout/showFormsBtn";
-import AddArticleForm from "../../../components/adminPanel/layout/addArticleForm";
+
+// redux
 import { useSelector, useDispatch } from "react-redux";
-import {getArticlesList} from "../../../store/slices/articlesSlice"
+import {getArticlesList} from "../../../store/slices/articlesSlice";
+
+// components
+import ArticlesContent from "../../../components/adminPanel/articles";
+import AddUserFormBtn from "../../../components/adminPanel/layout/showFormsBtn";
+import AddArticleForm from "../../../components/adminPanel/articles/addArticleForm";
+import EditArticleForm from "../../../components/adminPanel/articles/editArticleForm";
 
 const Articles = ({articlesList}) => {
-
-    const showingAddArticleForm = useSelector( state => state.articles.showingAddArticleForm);
     const dispatch = useDispatch();
-    dispatch(getArticlesList(articlesList))
+    const showingAddArticleForm = useSelector( state => state.articles.showingAddArticleForm);
+    const showingEditArticleForm = useSelector( state => state.articles.showingEditArticleForm);
+
+    useEffect(() => {
+        dispatch(getArticlesList(articlesList))
+    }, [articlesList, dispatch])
 
     return (
         <>
@@ -21,6 +33,9 @@ const Articles = ({articlesList}) => {
             <AddUserFormBtn isUser={false} tooltipValue={"افزودن مقاله جدید"} />
             {
                 showingAddArticleForm ? <AddArticleForm /> : null
+            }
+            {
+                showingEditArticleForm ? <EditArticleForm /> : null
             }
         </>
     )

@@ -1,9 +1,15 @@
-
-import { useDispatch } from "react-redux";
+// react & nextJS
 import {useState} from "react";
+
+// libraries
 import axios from "axios";
-import Form from "./form";
+
+// redux
+import { useDispatch } from "react-redux";
 import {addArticle, showAddArticleForm} from "../../../../store/slices/articlesSlice";
+
+// components
+import Form from "./form";
 
 const AddArticleForm = () => {
     const [article , setArticle] = useState({})
