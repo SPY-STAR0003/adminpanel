@@ -1,16 +1,4 @@
 // positions ========================
-.centerBox {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
 .toast {
   position : fixed;
   bottom : -4rem;
@@ -27,20 +15,6 @@
   position: absolute;
   bottom: 0;
   left: 0;
-}
-
-.opacityDiv {
-  display: none;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 9999;
-  animation: fade .2s;
 }
 
 .absTopLeft {

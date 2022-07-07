@@ -5,7 +5,7 @@ import Head from 'next/head';
 import SideNavbar from "../../../components/adminPanel/layout/sideNavbar";
 import PagesHeader from "../../../components/adminPanel/layout/pagesHeader";
 
-export default function Home() {
+export default function Profile() {
     return (
         <>
             <Head>

@@ -55,7 +55,7 @@ const ArticleCards = () => {
                                     {/*{article.hashtags.map((hashtag, index) => (*/}
                                     {/*    <span className={"primaryBtn"} key={index}> #{hashtag} </span>*/}
                                     {/*))}*/}
-                                    <span className={"primaryBtn"}> #{article.hashtags} </span>
+                                    <span className={"orangeBtn fs-7"}> #{article.hashtags} </span>
                                 </div>
                             </div>
                             <div className={"editCard"}>

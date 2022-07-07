@@ -8,7 +8,7 @@ import {FaUsers, FaHome, FaFileSignature, FaUserCircle} from "react-icons/fa";
 export default function SideNavbar() {
 
     const pagesList = [
-        { key : 1, page : "home", content : "خانه " , icon : FaHome },
+        { key : 1, page : "", content : "خانه " , icon : FaHome },
         { key : 2, page : "users", content : "لیست کاربران ", icon : FaUsers },
         { key : 3, page : "articles", content : "لیست مقالات ", icon : FaFileSignature },
         { key : 4, page : "profile", content : "پروفایل ", icon : FaUserCircle },

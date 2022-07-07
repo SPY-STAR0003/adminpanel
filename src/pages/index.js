@@ -1,12 +1,18 @@
+// react & nextJS
 import Head from 'next/head';
+
+// libraries
+
+// components
+import Login from "../components/adminPanel/auth/login";
 
 export default function Home() {
   return (
     <>
         <Head>
-            <title> صفحه لاگین </title>
+            <title> ورود به بخش مدیریت </title>
         </Head>
-        <p className={"textCenter mtb-8 fs-25 bold-8 white"}> در حال بروزرسانی ... </p>
+        <Login />
     </>
   )
 }

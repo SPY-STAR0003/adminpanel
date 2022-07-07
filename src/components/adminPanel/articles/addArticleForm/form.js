@@ -9,9 +9,9 @@ import { useDispatch, useSelector } from "react-redux";
 import {showAddArticleForm, showEditArticleForm} from "../../../../store/slices/articlesSlice";
 
 // components
-import Textarea from "../../layout/formsLayout/textarea";
-import Input from "../../layout/formsLayout/input";
-import Select from "../../layout/formsLayout/select";
+import Textarea from "../../../publicComponents/formsLayout/textarea";
+import Input from "../../../publicComponents/formsLayout/input";
+import Select from "../../../publicComponents/formsLayout/select";
 
 const Form = ({formHandler, inputHandler, isEditForm}) => {
     const editingArticle = useSelector(state => state.articles.editingArticle)

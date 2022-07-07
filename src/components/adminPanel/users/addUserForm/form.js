@@ -9,8 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {showAddUserForm, showEditUserForm} from "../../../../store/slices/usersSlice";
 
 // components
-import Input from "../../layout/formsLayout/input";
-import Select from "../../layout/formsLayout/select";
+import Input from "../../../publicComponents/formsLayout/input";
+import Select from "../../../publicComponents/formsLayout/select";
 
 const Form = ({formHandler, inputHandler, isEditForm}) => {
     let editingUserInState = useSelector(state => state.users.editingUser) || "";

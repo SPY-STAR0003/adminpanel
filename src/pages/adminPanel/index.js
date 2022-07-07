@@ -8,9 +8,9 @@ import axios from "axios";
 // redux
 
 // components
-import SideNavbar from "../../../components/adminPanel/layout/sideNavbar";
-import PagesHeader from "../../../components/adminPanel/layout/pagesHeader";
-import HomeContent from "../../../components/adminPanel/home";
+import SideNavbar from "../../components/adminPanel/layout/sideNavbar";
+import PagesHeader from "../../components/adminPanel/layout/pagesHeader";
+import HomeContent from "../../components/adminPanel/home";
 
 export default function Home({usersList, articlesList}) {
     return (
