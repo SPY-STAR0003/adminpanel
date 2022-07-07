@@ -12,7 +12,7 @@ import SideNavbar from "../../components/adminPanel/layout/sideNavbar";
 import PagesHeader from "../../components/adminPanel/layout/pagesHeader";
 import HomeContent from "../../components/adminPanel/home";
 
-export default function Home({usersList, articlesList}) {
+const AdminPanelHome = ({usersList, articlesList}) => {
     return (
         <>
             <Head>
@@ -46,3 +46,5 @@ export const getServerSideProps = async () => {
         }
     }
 }
+
+export default AdminPanelHome;

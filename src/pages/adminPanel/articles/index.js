@@ -17,12 +17,13 @@ import EditArticleForm from "../../../components/adminPanel/articles/editArticle
 
 const Articles = ({articlesList}) => {
     const dispatch = useDispatch();
-    const showingAddArticleForm = useSelector( state => state.articles.showingAddArticleForm);
-    const showingEditArticleForm = useSelector( state => state.articles.showingEditArticleForm);
 
     useEffect(() => {
         dispatch(getArticlesList(articlesList))
     }, [articlesList, dispatch])
+
+    const showingAddArticleForm = useSelector( state => state.articles.showingAddArticleForm);
+    const showingEditArticleForm = useSelector( state => state.articles.showingEditArticleForm);
 
     return (
         <>

@@ -1,22 +1,13 @@
 // react & nextJS
-
-// libraries
-
-// redux
-import { useSelector } from "react-redux";
+import {memo} from "react";
 
 // components
 import SideNavbar from "../layout/sideNavbar";
 import PagesHeader from "../layout/pagesHeader";
-import AddUserForm from "./addUserForm";
 import TableHeader from "./tableHeader";
 import TableBody from "./tableBody";
-import EditUserForm from "./editUserForm";
 
 const AdminPanelUsers = () => {
-
-    const showEditForm = useSelector( state => state.users.showEditUserForm);
-    const showAddForm =  useSelector( state => state.users.showAddUserForm);
 
     return (
         <main className={"dFlex"}>
@@ -34,14 +25,8 @@ const AdminPanelUsers = () => {
                     </table>
                 </div>
             </div>
-            {
-                showAddForm?<AddUserForm />:null
-            }
-            {
-                showEditForm?<EditUserForm />:null
-            }
         </main>
     )
 }
 
-export default AdminPanelUsers;
+export default memo(AdminPanelUsers);

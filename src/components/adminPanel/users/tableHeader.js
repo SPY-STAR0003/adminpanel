@@ -1,13 +1,20 @@
 
 const TableHeader = () => {
+
+    const headersTitle = [
+        " نام و نام خانوادگی ",
+        " کدملی ",
+        " سال تولد ",
+        " وظیفه ",
+        " عملکرد "
+    ]
+
     return (
         <thead>
             <tr>
-                <th> نام و نام خانوادگی </th>
-                <th> کدملی </th>
-                <th> سال تولد </th>
-                <th> وظیفه </th>
-                <th> عملکرد </th>
+                {
+                    headersTitle.map((title , index) => <th key={index}> {title} </th>)
+                }
             </tr>
         </thead>
     )

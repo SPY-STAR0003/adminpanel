@@ -1,4 +1,5 @@
 // react & nextJS
+import {memo} from "react";
 
 // libraries
 import { FaUserPlus, FaFileMedical } from "react-icons/fa";
@@ -12,6 +13,7 @@ import { showAddArticleForm } from "../../../../store/slices/articlesSlice";
 
 
 const ShowFormsBtn = ({isUser, tooltipValue}) => {
+
     const dispatch = useDispatch();
 
     const handleAddUserForm = () => {
@@ -35,4 +37,4 @@ const ShowFormsBtn = ({isUser, tooltipValue}) => {
     )
 }
 
-export default ShowFormsBtn;
+export default memo(ShowFormsBtn);

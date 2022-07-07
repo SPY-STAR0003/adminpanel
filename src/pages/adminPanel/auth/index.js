@@ -6,7 +6,7 @@ import Head from 'next/head';
 // components
 import Register from "../../../components/adminPanel/auth/register";
 
-export default function Auth() {
+const Auth = () => {
     return (
         <>
             <Head>
@@ -16,3 +16,5 @@ export default function Auth() {
         </>
     )
 }
+
+export default Auth;

@@ -6,20 +6,24 @@ import {useEffect} from "react";
 import axios from "axios";
 
 // redux
-import { useDispatch } from "react-redux";
+import { useDispatch , useSelector } from "react-redux";
 import {getUsers} from "../../../store/slices/usersSlice";
 
 // components
 import AddFormBtn from "../../../components/adminPanel/layout/showFormsBtn";
 import AdminPanelUsers from "../../../components/adminPanel/users";
+import AddUserForm from "../../../components/adminPanel/users/addUserForm";
+import EditUserForm from "../../../components/adminPanel/users/editUserForm";
 
 const Users = ({usersList}) => {
-
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(getUsers(usersList))
     }, [dispatch, usersList])
+
+    const showEditForm = useSelector( state => state.users.showEditUserForm);
+    const showAddForm =  useSelector( state => state.users.showAddUserForm);
 
     return (
         <>
@@ -27,7 +31,13 @@ const Users = ({usersList}) => {
                 <title> پنل مدیریت - لیست کاربران </title>
             </Head>
             <AdminPanelUsers />
-            <AddFormBtn isUser={true} tooltipValue={"اقزودن کاربر جدید"}/>
+            <AddFormBtn isUser={true} tooltipValue={"افزودن کاربر جدید"}/>
+            {
+                showAddForm?<AddUserForm />:null
+            }
+            {
+                showEditForm?<EditUserForm />:null
+            }
         </>
     )
 }

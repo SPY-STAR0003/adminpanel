@@ -1,3 +1,6 @@
+// react & nextJS
+import {memo} from "react";
+
 // components
 import SideNavbar from "../layout/sideNavbar";
 import PagesHeader from "../layout/pagesHeader";
@@ -24,4 +27,4 @@ const ArticlesContent = () => {
     )
 }
 
-export default ArticlesContent;
+export default memo(ArticlesContent);

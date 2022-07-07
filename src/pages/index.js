@@ -6,13 +6,15 @@ import Head from 'next/head';
 // components
 import Login from "../components/adminPanel/auth/login";
 
-export default function Home() {
-  return (
-    <>
-        <Head>
-            <title> ورود به بخش مدیریت </title>
-        </Head>
-        <Login />
-    </>
-  )
+const Home = () => {
+    return (
+        <>
+            <Head>
+                <title> ورود به بخش مدیریت </title>
+            </Head>
+            <Login />
+        </>
+    )
 }
+
+export default Home;

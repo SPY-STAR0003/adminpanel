@@ -5,7 +5,7 @@ import Link from "next/link";
 // libraries
 import {FaUsers, FaHome, FaFileSignature, FaUserCircle} from "react-icons/fa";
 
-export default function SideNavbar() {
+const SideNavbar = () => {
 
     const pagesList = [
         { key : 1, page : "", content : "خانه " , icon : FaHome },
@@ -42,3 +42,5 @@ export default function SideNavbar() {
         </div>
     )
 }
+
+export default SideNavbar;

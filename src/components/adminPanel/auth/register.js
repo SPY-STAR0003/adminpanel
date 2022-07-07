@@ -11,7 +11,7 @@ import Input from "../../publicComponents/formsLayout/input";
 const Register = () => {
 
     const formHandler = () => {
-        
+        console.log("form handler")
     }
 
     return (

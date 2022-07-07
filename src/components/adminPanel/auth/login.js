@@ -39,13 +39,17 @@ const Login = () => {
                 <div className={"loginFooter flexCenter"}>
                     <div>
                         <Link href={"/adminPanel/auth"}>
-                            <FaEdit className={"circleShadowBtn pointer"} />
+                            <a>
+                                <FaEdit className={"circleShadowBtn pointer"} />
+                            </a>
                         </Link>
                         <span className={"bottomTooltip"}> ثبت نام در سایت </span>
                     </div>
                     <div>
                         <Link href={"/adminPanel"}>
-                            <FaSignInAlt className={"circleShadowBtn fs-20 pointer"} />
+                            <a>
+                                <FaSignInAlt className={"circleShadowBtn fs-20 pointer"} />
+                            </a>
                         </Link>
                         <span className={"bottomTooltip loginIcon"}> ورود به سایت </span>
                     </div>
