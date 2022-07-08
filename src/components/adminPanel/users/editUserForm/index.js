@@ -12,6 +12,9 @@ import {updateUsersList, showEditUserForm} from "../../../../store/slices/usersS
 import Form from "../addUserForm/form";
 
 const EditUserForm = () => {
+
+    console.log("edit form loaded")
+
     const [editingUser , setEditingUser] = useState({});
 
     const dispatch = useDispatch();

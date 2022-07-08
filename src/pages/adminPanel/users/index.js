@@ -1,6 +1,6 @@
 // React & NextJs
 import Head from 'next/head';
-import {useEffect} from "react";
+import {useEffect, lazy, Suspense } from "react";
 
 // libraries
 import axios from "axios";
@@ -12,8 +12,10 @@ import {getUsers} from "../../../store/slices/usersSlice";
 // components
 import AddFormBtn from "../../../components/adminPanel/layout/showFormsBtn";
 import AdminPanelUsers from "../../../components/adminPanel/users";
-import AddUserForm from "../../../components/adminPanel/users/addUserForm";
-import EditUserForm from "../../../components/adminPanel/users/editUserForm";
+
+// lazyLoading
+const AddUserForm = lazy(() => import(/* webpackChunkName : "addUserForm" */"../../../components/adminPanel/users/addUserForm"));
+const EditUserForm = lazy(() => import(/* webpackChunkName : "editUserForm" */"../../../components/adminPanel/users/editUserForm"));
 
 const Users = ({usersList}) => {
     const dispatch = useDispatch()
@@ -32,12 +34,16 @@ const Users = ({usersList}) => {
             </Head>
             <AdminPanelUsers />
             <AddFormBtn isUser={true} tooltipValue={"افزودن کاربر جدید"}/>
-            {
-                showAddForm?<AddUserForm />:null
-            }
-            {
-                showEditForm?<EditUserForm />:null
-            }
+            <Suspense fallback={<p> loading ... </p>}>
+                {
+                    showAddForm?<AddUserForm />:null
+                }
+            </Suspense>
+            <Suspense fallback={<p> loading ... </p>}>
+                {
+                    showEditForm?<EditUserForm />:null
+                }
+            </Suspense>
         </>
     )
 }

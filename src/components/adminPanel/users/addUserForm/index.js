@@ -12,6 +12,9 @@ import {updateUsersList, showAddUserForm} from "../../../../store/slices/usersSl
 import Form from "./form";
 
 const AddUserForm = () => {
+
+    console.log("add form loaded");
+
     const [user , setUser] = useState({})
 
     const dispatch = useDispatch()
