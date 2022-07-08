@@ -2,7 +2,6 @@
 import {useState} from "react";
 
 // libraries
-import axios from "axios";
 
 // redux
 import { useDispatch } from "react-redux";
@@ -13,18 +12,24 @@ import Form from "./form";
 
 const AddUserForm = () => {
 
-    console.log("add form loaded");
-
     const [user , setUser] = useState({})
 
     const dispatch = useDispatch()
 
     const formHandler = async (e) => {
         e.preventDefault()
-        await axios.post("https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_users" , user)
-        let usersList = await axios.get("https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_users")
+        await fetch("https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_users" , {
+            method : "POST",
+            headers : {
+                "Content-Type": "application/JSON"
+            },
+            body : JSON.stringify(user)
+        })
+        let resUsersList = await fetch("https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_users");
+        let usersList = await resUsersList.json();
+        // next line make input forms empty
         e.target.reset()
-        dispatch(updateUsersList(usersList.data.data))
+        dispatch(updateUsersList(usersList.data))
         dispatch(showAddUserForm())
     }
 

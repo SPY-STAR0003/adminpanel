@@ -2,7 +2,6 @@
 import {useState} from "react";
 
 // libraries
-import axios from "axios";
 
 // redux
 import { useSelector , useDispatch } from "react-redux";
@@ -13,8 +12,6 @@ import Form from "../addUserForm/form";
 
 const EditUserForm = () => {
 
-    console.log("edit form loaded")
-
     const [editingUser , setEditingUser] = useState({});
 
     const dispatch = useDispatch();
@@ -22,8 +19,14 @@ const EditUserForm = () => {
 
     const formHandler = async (e) => {
         e.preventDefault()
-        await axios.put(`https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_users/${editingUserId}` , editingUser)
-        let usersList = await axios.get("https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_users")
+        await fetch(`https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_users/${editingUserId}` , {
+            method : "PUT",
+            headers: {
+                "content-type": "application/JSON"
+            },
+            body : JSON.stringify(editingUser)
+        })
+        let usersList = await fetch("https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_users")
         dispatch(updateUsersList(usersList.data.data))
         dispatch(showEditUserForm())
     }

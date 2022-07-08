@@ -1,7 +1,6 @@
 // react & nextJS
 
 // libraries
-import axios from "axios";
 import PN from "persian-number";
 import { FaRegClock, FaEdit, FaTrashAlt, FaEye } from "react-icons/fa";
 
@@ -19,7 +18,12 @@ const ArticleCards = () => {
     let articlesList = useSelector( state => state.articles.articlesList)
 
     const deleteArticleHandler = async (article) => {
-        await axios.delete(`https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_articles/${article.id}`)
+        await fetch(`https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_articles/${article.id}` , {
+            method : "delete",
+            headers: {
+                "Content-Type": "application/JSON"
+            },
+        })
         dispatch(deleteArticle(article.clientId))
     }
 

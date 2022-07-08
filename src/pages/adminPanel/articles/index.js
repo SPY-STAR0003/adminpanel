@@ -3,7 +3,6 @@ import Head from 'next/head';
 import {useEffect} from "react";
 
 // libraries
-import axios from "axios";
 
 // redux
 import { useSelector, useDispatch } from "react-redux";
@@ -19,8 +18,8 @@ const Articles = ({articlesList}) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getArticlesList(articlesList))
-    }, [articlesList, dispatch])
+        dispatch(getArticlesList(articlesList.data))
+    }, [articlesList.data, dispatch])
 
     const showingAddArticleForm = useSelector( state => state.articles.showingAddArticleForm);
     const showingEditArticleForm = useSelector( state => state.articles.showingEditArticleForm);
@@ -44,8 +43,8 @@ const Articles = ({articlesList}) => {
 
 export const getServerSideProps = async () => {
 
-    let resArticles = await axios.get("https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_articles");
-    let articlesList = resArticles.data.data;
+    let resArticles = await fetch("https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_articles");
+    let articlesList = await resArticles.json();
 
     return {
         props : {

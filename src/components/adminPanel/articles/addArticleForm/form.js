@@ -27,14 +27,14 @@ const Form = ({formHandler, inputHandler, isEditForm}) => {
                         inputSize={"w-5"}
                         labelValue={" عنوان مقاله :"}
                         onchange={inputHandler}
-                        defaultValue={editingArticle.subject}
+                        defaultValue={editingArticle?.subject}
                     />
                     <Input
                         inputName={"time"}
                         inputSize={"w-3 mr-10"}
                         labelValue={" زمان تقریبی موردنیاز برای مطالعه مقاله :"}
                         onchange={inputHandler}
-                        defaultValue={editingArticle.time}
+                        defaultValue={editingArticle?.time}
                     />
                 </div>
                 <div className={"row mt-1 mb-6"}>
@@ -43,7 +43,7 @@ const Form = ({formHandler, inputHandler, isEditForm}) => {
                         inputSize={"w-5"}
                         labelValue={" هشتگ های مقاله :"}
                         onchange={inputHandler}
-                        defaultValue={editingArticle.hashtags}
+                        defaultValue={editingArticle?.hashtags}
                     />
                     <Select
                         selectName={"sort"}
@@ -66,7 +66,7 @@ const Form = ({formHandler, inputHandler, isEditForm}) => {
                         textareaWidth={"w-9"}
                         labelValue={" متن مقاله :"}
                         onchange={inputHandler}
-                        defaultValue={editingArticle.content}
+                        defaultValue={editingArticle?.content}
                         textareaRows={10}
                     />
                 </div>

@@ -2,24 +2,34 @@
 import {useEffect, useState} from "react";
 
 // libraries
-import axios from "axios";
 
 // components
 import Form from "../addArticleForm/form";
 
 // redux
-import {addArticle, showAddArticleForm} from "../../../../store/slices/articlesSlice";
-import { useDispatch } from "react-redux";
+import {addArticle, showEditArticleForm, editArticle} from "../../../../store/slices/articlesSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const EditArticleForm = () => {
     const [editedArticle , setEditedArticle] = useState({})
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const editingArticle = useSelector(state => state.articles.editingArticle)
+
+    useEffect(() => {
+        setEditedArticle(editingArticle)
+    }, [])
 
     const formHandler = async (e) => {
         e.preventDefault()
-        await axios.post("https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_articles" , editedArticle);
-        dispatch(addArticle(editedArticle))
+        await fetch(`https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_articles/${editedArticle.id}` , {
+            method : "PUT",
+            headers : {
+                "Content-Type": "application/JSON"
+            },
+            body : JSON.stringify(editedArticle)
+        });
+        dispatch(editArticle(editedArticle))
     }
 
     const inputHandler = (key,value) => {
@@ -28,7 +38,7 @@ const EditArticleForm = () => {
 
     const hideForm = (e) => {
         if (e.target.classList.contains("fixedShadow")) {
-            dispatch(showAddArticleForm())
+            dispatch(showEditArticleForm())
         }
     }
 

@@ -2,7 +2,6 @@
 
 // libraries
 import {FaUserEdit , FaUserSlash} from "react-icons/fa";
-import axios from "axios";
 
 // redux
 import { useSelector, useDispatch } from "react-redux";
@@ -16,7 +15,12 @@ const TableBody = () => {
     const usersList = useSelector( state => state.users.usersList )
 
     const deleteHandler = async (id) => {
-        await axios.delete(`https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_users/${id}`);
+        await fetch(`https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_users/${id}` , {
+            method : "DELETE",
+            headers: {
+                "Content-Type": "application/JSON"
+            }
+        });
         dispatch(deleteUser(id))
     }
 

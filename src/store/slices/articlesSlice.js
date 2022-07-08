@@ -22,8 +22,8 @@ const articlesSlice = createSlice({
                 ...state,
                 showingAddArticleForm : false,
                 articlesList: [
+                    payload,
                     ...state.articlesList,
-                    payload
                 ]
             }
         },
@@ -47,9 +47,21 @@ const articlesSlice = createSlice({
                 editingArticle: payload
             }
         },
+        editArticle : ( state, {payload}) => {
+
+            let newArticlesList = state.articlesList.filter(item => item.id !== payload.id);
+            newArticlesList.push(payload)
+
+            return {
+                ...state,
+                articlesList : [...newArticlesList],
+                showingEditArticleForm: !state.showingEditArticleForm,
+                editingArticle: ""
+            }
+        }
     }
 })
 
-export const { getArticlesList, addArticle, showAddArticleForm, deleteArticle, showEditArticleForm} = articlesSlice.actions;
+export const { getArticlesList, addArticle, showAddArticleForm, deleteArticle, showEditArticleForm, editArticle} = articlesSlice.actions;
 
 export default articlesSlice.reducer;

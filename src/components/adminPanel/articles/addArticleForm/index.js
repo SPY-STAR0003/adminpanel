@@ -2,7 +2,6 @@
 import {useState} from "react";
 
 // libraries
-import axios from "axios";
 
 // redux
 import { useDispatch } from "react-redux";
@@ -18,7 +17,14 @@ const AddArticleForm = () => {
 
     const formHandler = async (e) => {
         e.preventDefault()
-        await axios.post("https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_articles" , article);
+        await fetch("https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_articles" , {
+            method : "POST",
+            headers: {
+                "Content-Type": "application/JSON",
+                "charset": "utf-8"
+            },
+            body : JSON.stringify(article)
+        })
         dispatch(addArticle(article))
     }
 

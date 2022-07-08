@@ -3,7 +3,6 @@ import Head from 'next/head';
 import {useEffect, lazy, Suspense } from "react";
 
 // libraries
-import axios from "axios";
 
 // redux
 import { useDispatch , useSelector } from "react-redux";
@@ -21,8 +20,8 @@ const Users = ({usersList}) => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getUsers(usersList))
-    }, [dispatch, usersList])
+        dispatch(getUsers(usersList.data))
+    }, [dispatch, usersList.data])
 
     const showEditForm = useSelector( state => state.users.showEditUserForm);
     const showAddForm =  useSelector( state => state.users.showAddUserForm);
@@ -50,8 +49,8 @@ const Users = ({usersList}) => {
 
 export const getServerSideProps = async () => {
 
-    let res = await axios.get("https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_users");
-    let usersList = res.data.data
+    let res = await fetch("https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_users");
+    let usersList = await res.json();
 
     return {
         props : {

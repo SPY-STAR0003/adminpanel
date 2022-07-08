@@ -1,9 +1,7 @@
 // React & NextJs
 import Head from 'next/head';
-import {useEffect} from "react";
 
 // libraries
-import axios from "axios";
 
 // redux
 
@@ -12,7 +10,8 @@ import SideNavbar from "../../components/adminPanel/layout/sideNavbar";
 import PagesHeader from "../../components/adminPanel/layout/pagesHeader";
 import HomeContent from "../../components/adminPanel/home";
 
-const AdminPanelHome = ({usersList, articlesList}) => {
+const AdminPanelHome = ({usersList , articlesList}) => {
+
     return (
         <>
             <Head>
@@ -26,7 +25,7 @@ const AdminPanelHome = ({usersList, articlesList}) => {
                     <header className={"flexCenter"}>
                         <PagesHeader headerTitle={"پنل مدیریت وبلاگ آسان بیاموز"} />
                     </header>
-                    <HomeContent usersList={usersList} articlesList={articlesList} />
+                    <HomeContent usersList={usersList.data} articlesList={articlesList.data} />
                 </div>
             </main>
         </>
@@ -34,10 +33,12 @@ const AdminPanelHome = ({usersList, articlesList}) => {
 }
 
 export const getServerSideProps = async () => {
-    let resUsers = await axios.get("https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_users");
-    let resArticles = await axios.get("https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_articles");
-    let usersList = resUsers.data.data;
-    let articlesList = resArticles.data.data;
+    let resUsers = await fetch("https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_users");
+    let resArticles = await fetch("https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_articles");
+    let usersList = await resUsers.json();
+    let articlesList = await resArticles.json();
+
+    console.log(usersList)
 
     return {
         props : {
