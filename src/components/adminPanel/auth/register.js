@@ -8,7 +8,7 @@ import { FaUserCheck, FaSignInAlt } from "react-icons/fa";
 // components
 import Input from "../../publicComponents/formsLayout/input";
 
-const Register = () => {
+const RegisterContent = () => {
 
     const formHandler = () => {
         console.log("form handler")
@@ -91,4 +91,4 @@ const Register = () => {
     )
 }
 
-export default Register;
+export default RegisterContent;

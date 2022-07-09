@@ -1,32 +1,51 @@
-// react & nextJS
-import {memo} from "react";
+// React & NextJs
+import {lazy, Suspense } from "react";
+
+// redux
+import { useSelector } from "react-redux";
 
 // components
-import SideNavbar from "../layout/sideNavbar";
-import PagesHeader from "../layout/pagesHeader";
-import TableHeader from "./tableHeader";
-import TableBody from "./tableBody";
+import AddFormBtn from "../../../components/adminPanel/layout/showFormsBtn";
+import AdminPanelUsers from "../../../components/adminPanel/users/adminPanelUsers";
 
-const AdminPanelUsers = () => {
+// design Patterns
+import { authenticated } from "../auth/notAccess";
+
+// lazyLoading
+const AddUserForm = lazy(() => import(/* webpackChunkName : "addUserForm" */"./addUserForm"));
+const EditUserForm = lazy(() => import(/* webpackChunkName : "editUserForm" */"./editUserForm"));
+
+const UsersPage = () => {
+
+    // let res = await fetch("https://62b6ea7b76028b55ae716ba0.endapi.io/auth" , {
+    //     method: "POST",
+    //     headers: {
+    //       "content-type": "application/JSON"  
+    //     },
+    //     body: JSON.stringify({hasAccess: false})
+    // })
+
+    // console.log(res)
+    
+    const showEditForm = useSelector( state => state.users.showEditUserForm);
+    const showAddForm =  useSelector( state => state.users.showAddUserForm);
 
     return (
-        <main className={"dFlex"}>
-            <aside>
-                <SideNavbar />
-            </aside>
-            <div className={"w-10 m-4"}>
-                <header className={"flexCenter"}>
-                    <PagesHeader headerTitle={"لیست کاربران سایت آسان بیاموز"} />
-                </header>
-                <div className={"flexCenter flexColumn"}>
-                    <table className={"showUsersTable w-9 white textCenter"}>
-                        <TableHeader />
-                        <TableBody />
-                    </table>
-                </div>
-            </div>
-        </main>
+        <>
+            <AdminPanelUsers />
+            <AddFormBtn isUser={true} tooltipValue={"افزودن کاربر جدید"}/>
+            <Suspense fallback={<p> loading ... </p>}>
+                {
+                    showAddForm?<AddUserForm />:null
+                }
+            </Suspense>
+            <Suspense fallback={<p> loading ... </p>}>
+                {
+                    showEditForm?<EditUserForm />:null
+                }
+            </Suspense>
+        </>
     )
 }
 
-export default memo(AdminPanelUsers);
+export default authenticated(UsersPage);

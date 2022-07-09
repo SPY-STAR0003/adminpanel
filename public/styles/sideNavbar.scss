@@ -9,8 +9,8 @@
     align-items: center;
     justify-content: center;
     .sideNavbarPage {
-      width: 80px;
-      height: 80px;
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
       margin: 1rem 0;
       background: linear-gradient(225deg, #2f4256, #283848);
@@ -19,7 +19,7 @@
       transition: all .4s;
       svg {
         position: relative;
-        font-size: 3rem;
+        font-size: 2.5rem;
       }
     }
     .sideNavbarPage:hover {

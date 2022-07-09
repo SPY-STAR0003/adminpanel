@@ -4,17 +4,17 @@ import Head from 'next/head';
 // libraries
 
 // components
-import Register from "../../../components/adminPanel/auth/register";
+import RegisterContent from "../../../components/adminPanel/auth/register";
 
-const Auth = () => {
+const Register = () => {
     return (
         <>
             <Head>
                 <title> ورود به بخش مدیریت </title>
             </Head>
-            <Register />
+            <RegisterContent />
         </>
     )
 }
 
-export default Auth;
+export default Register;

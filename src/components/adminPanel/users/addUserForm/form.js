@@ -26,14 +26,14 @@ const Form = ({formHandler, inputHandler, isEditForm}) => {
                         inputSize={"w-5"}
                         labelValue={" نام و نام خانوادگی :"}
                         onchange={inputHandler}
-                        defaultValue={editingUserInState.name}
+                        defaultValue={editingUserInState?.name}
                     />
                     <Input
                         inputName={"year"}
                         inputSize={"w-3 mr-10"}
                         labelValue={" سال تولد :"}
                         onchange={inputHandler}
-                        defaultValue={editingUserInState.year}
+                        defaultValue={editingUserInState?.year}
                     />
                 </div>
                 <div className={"row mt-1 mb-6"}>
@@ -42,7 +42,7 @@ const Form = ({formHandler, inputHandler, isEditForm}) => {
                         inputSize={"w-5"}
                         labelValue={" کد ملی :"}
                         onchange={inputHandler}
-                        defaultValue={editingUserInState.code}
+                        defaultValue={editingUserInState?.code}
                     />
                     <Select
                         selectName={"gender"}
@@ -61,7 +61,7 @@ const Form = ({formHandler, inputHandler, isEditForm}) => {
                         inputSize={"w-5"}
                         labelValue={" ایمیل :"}
                         onchange={inputHandler}
-                        defaultValue={editingUserInState.email}
+                        defaultValue={editingUserInState?.email}
                     />
                     <Select
                         selectName={"role"}

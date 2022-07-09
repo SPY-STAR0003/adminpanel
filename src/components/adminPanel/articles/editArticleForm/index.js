@@ -7,7 +7,7 @@ import {useEffect, useState} from "react";
 import Form from "../addArticleForm/form";
 
 // redux
-import {addArticle, showEditArticleForm, editArticle} from "../../../../store/slices/articlesSlice";
+import { showEditArticleForm, editArticle } from "../../../../store/slices/articlesSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const EditArticleForm = () => {
@@ -18,7 +18,7 @@ const EditArticleForm = () => {
 
     useEffect(() => {
         setEditedArticle(editingArticle)
-    }, [])
+    }, [editingArticle])
 
     const formHandler = async (e) => {
         e.preventDefault()
