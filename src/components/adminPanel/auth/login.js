@@ -1,6 +1,7 @@
 // react & nextJS
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
 
 // libraries
 import { FaEdit, FaSignInAlt, FaKey } from "react-icons/fa";
@@ -9,6 +10,16 @@ import { FaEdit, FaSignInAlt, FaKey } from "react-icons/fa";
 import Input from "../../publicComponents/formsLayout/input";
 
 const Login = () => {
+
+    const changeAuth = async () => {
+        await fetch("https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_auth/30" , {
+            method : "PUT",
+            headers : {
+                "content-type": "application/JSON"
+            },
+            body : JSON.stringify({hasAccess: true})
+        })
+    }
 
     return (
         <div className={"fixedShadow"}>
@@ -47,7 +58,7 @@ const Login = () => {
                     </div>
                     <div>
                         <Link href={"/adminPanel"}>
-                            <a>
+                            <a onClick={() => changeAuth()}>
                                 <FaSignInAlt className={"circleShadowBtn fs-20 pointer"} />
                             </a>
                         </Link>

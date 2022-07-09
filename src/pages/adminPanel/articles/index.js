@@ -2,17 +2,13 @@
 import Head from 'next/head';
 import {useEffect} from "react";
 
-// libraries
-
 // redux
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import {getArticlesList} from "../../../store/slices/articlesSlice";
 
 // components
-import ArticlesContent from "../../../components/adminPanel/articles";
-import AddUserFormBtn from "../../../components/adminPanel/layout/showFormsBtn";
-import AddArticleForm from "../../../components/adminPanel/articles/addArticleForm";
-import EditArticleForm from "../../../components/adminPanel/articles/editArticleForm";
+import ArticlesPage from '../../../components/adminPanel/articles';
+
 
 const Articles = ({articlesList}) => {
     const dispatch = useDispatch();
@@ -21,22 +17,13 @@ const Articles = ({articlesList}) => {
         dispatch(getArticlesList(articlesList.data))
     }, [articlesList.data, dispatch])
 
-    const showingAddArticleForm = useSelector( state => state.articles.showingAddArticleForm);
-    const showingEditArticleForm = useSelector( state => state.articles.showingEditArticleForm);
 
     return (
         <>
             <Head>
                 <title> پنل مدیریت - لیست مقالات </title>
             </Head>
-            <ArticlesContent />
-            <AddUserFormBtn isUser={false} tooltipValue={"افزودن مقاله جدید"} />
-            {
-                showingAddArticleForm ? <AddArticleForm /> : null
-            }
-            {
-                showingEditArticleForm ? <EditArticleForm /> : null
-            }
+            <ArticlesPage />
         </>
     )
 }

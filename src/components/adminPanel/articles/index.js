@@ -1,30 +1,33 @@
-// react & nextJS
-import {memo} from "react";
+
+// redux
+import { useSelector } from "react-redux";
 
 // components
-import SideNavbar from "../layout/sideNavbar";
-import PagesHeader from "../layout/pagesHeader";
-import ArticleCards from "./articleCards";
-import ArticlesFilter from "./articlesFilter";
+import ArticlesContent from "./articlesContent";
+import AddUserFormBtn from "./../layout/showFormsBtn/index";
+import AddArticleForm from "./addArticleForm";
+import EditArticleForm from "./editArticleForm";
 
-const ArticlesContent = () => {
+// designPatters
+import authenticated from "../auth";
+
+const ArticlesPage = () => {
+
+    const showingAddArticleForm = useSelector( state => state.articles.showingAddArticleForm);
+    const showingEditArticleForm = useSelector( state => state.articles.showingEditArticleForm);
 
     return (
-        <main className={"dFlex"}>
-            <aside>
-                <SideNavbar/>
-            </aside>
-            <div className={"w-10 m-4"}>
-                <header className={"flexCenter"}>
-                    <PagesHeader headerTitle={"لیست مقالات منتشرشده در سایت آسان بیاموز"}/>
-                </header>
-                <div className={"adminPanelArticlesContent flexSpaceAround flexAlignStart"}>
-                    <ArticleCards/>
-                    <ArticlesFilter/>
-                </div>
-            </div>
-        </main>
+        <>
+            <ArticlesContent />
+            <AddUserFormBtn isUser={false} tooltipValue={"افزودن مقاله جدید"} />
+            {
+                showingAddArticleForm ? <AddArticleForm /> : null
+            }
+            {
+                showingEditArticleForm ? <EditArticleForm /> : null
+            }
+        </>
     )
 }
 
-export default memo(ArticlesContent);
+export default authenticated(ArticlesPage);

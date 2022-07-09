@@ -1,5 +1,5 @@
 // React
-import {useEffect, useState} from "react";
+import {memo, useEffect, useState} from "react";
 
 // libraries
 
@@ -58,4 +58,4 @@ const EditArticleForm = () => {
     )
 }
 
-export default EditArticleForm;
+export default memo(EditArticleForm);

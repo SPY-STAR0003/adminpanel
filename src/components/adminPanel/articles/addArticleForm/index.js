@@ -1,5 +1,5 @@
 // react & nextJS
-import {useState} from "react";
+import {memo, useState} from "react";
 
 // libraries
 
@@ -55,4 +55,4 @@ const AddArticleForm = () => {
 }
 
 
-export default AddArticleForm;
+export default memo(AddArticleForm);

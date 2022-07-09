@@ -1,27 +1,9 @@
 // react & nextJS
 import Image from "next/Image";
 import Link from "next/Link";
-import { useEffect } from "react";
+import propTypes from "prop-types";
 
-// redux
-import { useSelector } from "react-redux";
-
-
-const authenticated = (Component) => {
-
-    // ajax
-    useEffect(() => {
-        console.log("a")
-    }, [])
-
-    console.log(hasAccess)
-
-    if(false) return () =>  <Component />
-    
-    return () => <NotAccess />
-}
-
-const NotAccess = () => {
+const NotAccess = ({ errorTitle, linkTitle }) => {
 
     return (
         <>
@@ -32,11 +14,13 @@ const NotAccess = () => {
                     height={"300px"}
                     width={"300px"}
                 />
-                <p className={"fs-15 bold-7"}> شما به این قسمت دسترسی ندارید </p>
+                <p className={"fs-15 bold-7"}> {errorTitle} </p>
                 <p className={"fs-12 bold-3 mt-5"}>
-                    لطفاً ابتدا
-                    <Link className={"underlined"} href={"/"}> وارد </Link>
-                    شوید ... 
+                    <Link className={"underlined"} href={"/"}> 
+                        <a>
+                            {linkTitle}
+                        </a>
+                    </Link>
                 </p>
             </div>    
         </>
@@ -44,4 +28,14 @@ const NotAccess = () => {
 
 }
 
-export { NotAccess, authenticated };
+NotAccess.propTypes = {
+    errorTitle : propTypes.string,
+    linkTitle : propTypes.string,
+}
+
+NotAccess.defaultProps = {
+    errorTitle : "شما به این قسمت دسترسی ندارید",
+    linkTitle : "== لطفا ابتدا با کلیک روی اینجا وارد حساب کاربری خود شوید ! =="
+}
+
+export default NotAccess;
