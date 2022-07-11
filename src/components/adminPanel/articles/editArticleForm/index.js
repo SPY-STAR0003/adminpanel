@@ -3,12 +3,16 @@ import {memo, useEffect, useState} from "react";
 
 // libraries
 
-// components
-import Form from "../addArticleForm/form";
-
 // redux
 import { showEditArticleForm, editArticle } from "../../../../store/slices/articlesSlice";
 import { useDispatch, useSelector } from "react-redux";
+
+// designPattern
+import observable from "../../../observable";
+
+// components
+import Form from "../addArticleForm/form";
+
 
 const EditArticleForm = () => {
     const [editedArticle , setEditedArticle] = useState({})
@@ -29,7 +33,8 @@ const EditArticleForm = () => {
             },
             body : JSON.stringify(editedArticle)
         });
-        dispatch(editArticle(editedArticle))
+        dispatch(editArticle(editedArticle));
+        observable.notify(` مقاله ${editedArticle.subject} ویرایش شد . ` , "info")
     }
 
     const inputHandler = (key,value) => {

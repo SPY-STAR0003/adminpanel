@@ -8,6 +8,9 @@ import { FaRegClock, FaEdit, FaTrashAlt, FaEye } from "react-icons/fa";
 import { useSelector , useDispatch } from "react-redux";
 import {deleteArticle, showEditArticleForm} from "../../../store/slices/articlesSlice";
 
+// design-Patters
+import observable from "../../observable";
+
 // components
 
 
@@ -24,7 +27,8 @@ const ArticleCards = () => {
                 "Content-Type": "application/JSON"
             },
         })
-        dispatch(deleteArticle(article.clientId))
+        dispatch(deleteArticle(article.id));
+        observable.notify(`مقاله ${article.subject} از لیست مقالات حذف شد .` , "error")
     }
 
     const seeArticleHandler = () => {
@@ -34,7 +38,7 @@ const ArticleCards = () => {
         <div className={"articlesList w-7"}>
             {
                 articlesList.map(article => (
-                        <div className={"adminPanelArticleCard card"} key={article.clientId}>
+                        <div className={"adminPanelArticleCard card"} key={article.id}>
                             <div className={"cardHeader"}>
                                 <div className={"cardSubject"}>
                                     - {article.subject}

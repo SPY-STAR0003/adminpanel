@@ -12,6 +12,7 @@ const getHasAccess = async (setHasAccess) => {
 
 const authenticated = (Component) => {
 
+    // eslint-disable-next-line react/display-name
     return () =>  {
         const [hasAccess , setHasAccess] = useState(true)
 

@@ -7,6 +7,9 @@ import {memo, useState} from "react";
 import { useDispatch } from "react-redux";
 import {addArticle, showAddArticleForm} from "../../../../store/slices/articlesSlice";
 
+// designPattern
+import observable from "../../../observable";
+
 // components
 import Form from "./form";
 
@@ -25,7 +28,8 @@ const AddArticleForm = () => {
             },
             body : JSON.stringify(article)
         })
-        dispatch(addArticle(article))
+        dispatch(addArticle(article));
+        observable.notify(` مقاله به لیست مقالات اضافه شد . ` , "success")
     }
 
     const inputHandler = (key,value) => {

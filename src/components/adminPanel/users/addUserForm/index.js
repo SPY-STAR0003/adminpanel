@@ -3,6 +3,9 @@ import {useState} from "react";
 
 // libraries
 
+// design Patterns
+import observable from "../../../observable";
+
 // redux
 import { useDispatch } from "react-redux";
 import {updateUsersList, showAddUserForm} from "../../../../store/slices/usersSlice";
@@ -31,6 +34,7 @@ const AddUserForm = () => {
         e.target.reset()
         dispatch(updateUsersList(usersList.data))
         dispatch(showAddUserForm())
+        observable.notify(`کاربر ${user.name} به لیست اضافه شد . ` , "success");
     }
 
     const inputHandler = (key,value) => {

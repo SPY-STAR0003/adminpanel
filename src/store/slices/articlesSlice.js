@@ -34,7 +34,7 @@ const articlesSlice = createSlice({
             }
         },
         deleteArticle : ( state, {payload}) => {
-            let newArticlesList = state.articlesList.filter(article => article.clientId !== payload);
+            let newArticlesList = state.articlesList.filter(article => article.id !== payload);
             return {
                 ...state,
                 articlesList : [...newArticlesList]

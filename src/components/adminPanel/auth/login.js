@@ -1,10 +1,11 @@
 // react & nextJS
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
 
 // libraries
 import { FaEdit, FaSignInAlt, FaKey } from "react-icons/fa";
+import observable from "../../observable";
+import { toast } from "react-toastify";
 
 // components
 import Input from "../../publicComponents/formsLayout/input";
@@ -19,6 +20,7 @@ const Login = () => {
             },
             body : JSON.stringify({hasAccess: true})
         })
+        observable.notify("به پنل مدیریت خوش آمدید" , "success")
     }
 
     return (

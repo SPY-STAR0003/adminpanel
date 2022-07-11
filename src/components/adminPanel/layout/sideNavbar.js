@@ -5,6 +5,9 @@ import Link from "next/link";
 // libraries
 import {FaUsers, FaHome, FaFileSignature, FaUserCircle, FaSignOutAlt} from "react-icons/fa";
 
+// designPatterns
+import observable from "../../observable";
+
 const SideNavbar = () => {
     
     const changeAuth = async () => {
@@ -15,6 +18,7 @@ const SideNavbar = () => {
             },
             body : JSON.stringify({hasAccess: false})
         })
+        observable.notify("شما از پنل کاربری خود خارج شدید ." , "warning")
     }
 
     const pagesList = [

@@ -2,6 +2,10 @@
 
 // libraries
 import {FaUserEdit , FaUserSlash} from "react-icons/fa";
+import { toast } from "react-toastify";
+
+// design Patterns
+import observable from "../../observable";
 
 // redux
 import { useSelector, useDispatch } from "react-redux";
@@ -14,14 +18,15 @@ const TableBody = () => {
 
     const usersList = useSelector( state => state.users.usersList )
 
-    const deleteHandler = async (id) => {
-        await fetch(`https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_users/${id}` , {
+    const deleteHandler = async (user) => {
+        await fetch(`https://62b6ea7b76028b55ae716ba0.endapi.io/weblog_users/${user.id}` , {
             method : "DELETE",
             headers: {
                 "Content-Type": "application/JSON"
             }
         });
-        dispatch(deleteUser(id))
+        dispatch(deleteUser(user.id));
+        observable.notify(`کاربر ${user.name} با موفقیت حذف شد . ` , "error");
     }
 
     return (
@@ -37,7 +42,7 @@ const TableBody = () => {
                         <td>
                             <span
                                 className={"redHover fs-12 mrl-2"}
-                                onClick={() => deleteHandler(user.id)}
+                                onClick={() => deleteHandler(user)}
                             >
                                 <FaUserSlash />
                             </span>
